@@ -27,7 +27,6 @@ public class DBCon {
 			DB_USERNAME = p.getProperty("user");
 			DB_PASSWORD = p.getProperty("password");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

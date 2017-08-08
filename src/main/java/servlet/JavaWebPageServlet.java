@@ -20,15 +20,28 @@ public class JavaWebPageServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println(req.getRequestURI());
         CommodityDAO commodityDAO = new CommodityDAO();
-        List<Commodity> list = commodityDAO.getAllCommodity();
+        if(req.getParameter("method") == "delete") {
+            
+        }
+        List<Commodity> list = null;
+        if(req.getParameter("id") != null && !req.getParameter("id").equals("")){
+            list = commodityDAO.getAllCommodity(req.getParameter("id"));
+        } else {
+            list = commodityDAO.getAllCommodity();
+        }
         req.setAttribute("list", list);
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        req.getRequestDispatcher("/first.jsp").forward(req, resp);
     }
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
+    }
+    
+    protected void delete() {
+        
     }
     
 }

@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class ControlDB {
 
 	//执行select语句
-	public ResultSet executeQuery(String sql){
+	public static ResultSet executeQuery(String sql){
 		ResultSet rs = null;
 		Connection conn = null;
 		Statement stmt = null;
