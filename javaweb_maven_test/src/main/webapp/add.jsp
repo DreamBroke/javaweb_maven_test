@@ -12,27 +12,24 @@ label {
 </style>
 </head>
 <body>
-	<h2>Hello World! --- Add</h2>
+	<h2>Hello World! --- ${method}</h2>
 	<hr>
 	<c:choose>
 		<c:when test="${empty commodity }">
-			<form action="add" method="post" id="form"
-				onsubmit="return validate()">
+			<form action="add" method="post" id="form" onsubmit="return validate()">
 				<label for="id">ID</label> <input id="id" name="commodity.id"><br>
 				<label for="name">姓名</label> <input id="name" name="commodity.name"><br>
-				<label for="price">价格</label> <input id="price"
-					name="commodity.price"><br> <label for="quantity">数量</label>
-				<input id="quantity" name="commodity.quantity"><br>
+				<label for="price">价格</label> <input id="price" name="commodity.price"><br> 
+				<label for="quantity">数量</label> <input id="quantity" name="commodity.quantity"><br>
 				<button type="submit" id="submit">提交</button>
 				<button type="reset">重置</button>
 			</form>
 		</c:when>
 		<c:otherwise>
-			<form action="update" method="post" id="form"
-				onsubmit="return validate()">
-				<label for="id">ID</label> <input id="id" name="commodity.id" disabled
-					value="${commodity.id}"><br> <label for="name">姓名</label>
-				<input id="name" name="commodity.name" value="${commodity.name}"><br>
+			<form action="update" method="post" id="form" onsubmit="return validate()">
+				<label for="id">ID</label> <input disabled value="${commodity.id}"><br>
+				<input id="id" name="commodity.id" type="hidden" value="${commodity.id}">
+				<label for="name">姓名</label> <input id="name" name="commodity.name" value="${commodity.name}"><br>
 				<label for="price">价格</label> <input id="price"
 					name="commodity.price" value="${commodity.price}"><br>
 				<label for="quantity">数量</label> <input id="quantity"
@@ -46,8 +43,7 @@ label {
 	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		function validate() {
-			if ($("#name").val() === "" || $("#price").val() === ""
-					|| $("#quantity").val() === "") {
+			if ($("#name").val() === "" || $("#price").val() === "" || $("#quantity").val() === "") {
 				alert("姓名、价格、数量不能为空！");
 				return false;
 			}

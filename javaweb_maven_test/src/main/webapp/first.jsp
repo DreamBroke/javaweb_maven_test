@@ -42,7 +42,7 @@ td {
                         <td>${commodity.name}</td>
                         <td>￥ ${commodity.price}</td>
                         <td>${commodity.quantity}个</td>
-                        <td><a href="hello/add?id=${commodity.id}">修改</a></td>
+                        <td><a href="hello/update?id=${commodity.id}">修改</a></td>
                         <td><button onclick="deleteCommodity(${commodity.id})">刪除</button></td>
                     </tr>
                 </c:forEach>

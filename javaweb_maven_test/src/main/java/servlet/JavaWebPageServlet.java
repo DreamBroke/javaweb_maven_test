@@ -17,16 +17,17 @@ public class JavaWebPageServlet extends HttpServlet {
      * 
      */
     private static final long serialVersionUID = 2874100059291626590L;
-
+    private CommodityDAO commodityDAO = new CommodityDAO();
+    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println(req.getRequestURI());
-        CommodityDAO commodityDAO = new CommodityDAO();
-        if(req.getParameter("method") == "delete") {
-            
+        if (req.getParameter("method") != null && req.getParameter("method").equals("delete")) {
+            commodityDAO.deleteConmmodityById(req.getParameter("id"));
+            resp.sendRedirect("hello");
+            return;
         }
         List<Commodity> list = null;
-        if(req.getParameter("id") != null && !req.getParameter("id").equals("")){
+        if (req.getParameter("id") != null && !req.getParameter("id").equals("")) {
             list = commodityDAO.getAllCommodity(req.getParameter("id"));
         } else {
             list = commodityDAO.getAllCommodity();
@@ -34,14 +35,10 @@ public class JavaWebPageServlet extends HttpServlet {
         req.setAttribute("list", list);
         req.getRequestDispatcher("/first.jsp").forward(req, resp);
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
     }
-    
-    protected void delete() {
-        
-    }
-    
+
 }

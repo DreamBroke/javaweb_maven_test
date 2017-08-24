@@ -7,21 +7,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Commodity;
 import dao.CommodityDAO;
 
-public class AddCommodityServlet extends HttpServlet {
+public class UpdateCommodityServlet extends HttpServlet {
 
     /**
      * 
      */
-    private static final long serialVersionUID = -1335636978667424021L;
+    private static final long serialVersionUID = 8457637237604586592L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("method", "Add");
+        CommodityDAO commodityDAO = new CommodityDAO();
+        Commodity commodity = commodityDAO.getCommodityById(req.getParameter("id"));
+        req.setAttribute("commodity", commodity);
+        req.setAttribute("method", "Update");
         req.getRequestDispatcher("/add.jsp").forward(req, resp);
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
@@ -30,8 +34,8 @@ public class AddCommodityServlet extends HttpServlet {
         String quantity = req.getParameter("commodity.quantity");
         String name = req.getParameter("commodity.name");
         CommodityDAO commodityDAO = new CommodityDAO();
-        commodityDAO.insertToCommodity(id, name, price, quantity);
+        commodityDAO.updateCommodityById(id, name, price, quantity);
         resp.sendRedirect("../hello");
     }
-
+    
 }
