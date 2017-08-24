@@ -4,23 +4,30 @@
 <html>
 <head>
 <title>JavaWebTest</title>
+<link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
 td {
     text-align: center;
     padding: 5px;
     min-width: 40px;
 }
+.center {
+    text-align: center;
+}
+
 </style>
 </head>
 <body>
-    <h2>
-        <a href="hello">显示全部</a>
-        <a href="hello/add">添加</a>
-        <input type="text" id="ID" placeholder="输入ID查询">
-        <button onclick="selectById()">确定</button>
-    </h2>
+    <div class="center">
+	    <h2 style="display: inline;">
+	        <a href="hello">显示全部</a>
+	        <a href="hello/add">添加</a>
+	    </h2>
+	    <input type="text" id="ID" placeholder="输入ID查询">
+	    <button onclick="selectById()">确定</button>
+    </div>
     <hr />
-    <table style="border:1px solid #000;">
+    <table class="center-block" style="border:1px solid #000;">
         <tr>
             <td>ID</td>
             <td>名称</td>
