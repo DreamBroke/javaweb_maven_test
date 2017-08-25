@@ -26,4 +26,8 @@
     <servlet-name>UpdateCommodityServlet</servlet-name>
     <url-pattern>/hello/update</url-pattern>
   </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>JavaWebPageServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 </web-app>

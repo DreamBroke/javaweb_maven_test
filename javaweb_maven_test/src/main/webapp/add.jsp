@@ -4,20 +4,23 @@
 <html>
 <head>
 <title>JavaWeb-Add</title>
-
+<link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
 <style type="text/css">
 label {
 	width: 32px;
 	display: inline-block;
 }
+.center {
+    text-align: center;
+}
 </style>
 </head>
 <body>
-	<h2>Hello World! --- ${method}</h2>
+	<h2 class="center">${method}</h2>
 	<hr>
 	<c:choose>
 		<c:when test="${empty commodity }">
-			<form action="add" method="post" id="form" onsubmit="return validate()">
+			<form action="add" method="post" id="form" onsubmit="return validate()" class="container center">
 				<label for="id">ID</label> <input id="id" name="commodity.id"><br>
 				<label for="name">姓名</label> <input id="name" name="commodity.name"><br>
 				<label for="price">价格</label> <input id="price" name="commodity.price"><br> 
@@ -27,7 +30,7 @@ label {
 			</form>
 		</c:when>
 		<c:otherwise>
-			<form action="update" method="post" id="form" onsubmit="return validate()">
+			<form action="update" method="post" id="form" onsubmit="return validate()" class="container center">
 				<label for="id">ID</label> <input disabled value="${commodity.id}"><br>
 				<input id="id" name="commodity.id" type="hidden" value="${commodity.id}">
 				<label for="name">姓名</label> <input id="name" name="commodity.name" value="${commodity.name}"><br>
