@@ -1,33 +1,42 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-  <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-    <servlet-name>JavaWebPageServlet</servlet-name>
-    <servlet-class>servlet.JavaWebPageServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>AddCommodityServlet</servlet-name>
-    <servlet-class>servlet.AddCommodityServlet</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>UpdateCommodityServlet</servlet-name>
-    <servlet-class>servlet.UpdateCommodityServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>JavaWebPageServlet</servlet-name>
-    <url-pattern>/hello</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>AddCommodityServlet</servlet-name>
-    <url-pattern>/hello/add</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>UpdateCommodityServlet</servlet-name>
-    <url-pattern>/hello/update</url-pattern>
-  </servlet-mapping>
-    <servlet-mapping>
-    <servlet-name>JavaWebPageServlet</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<display-name>Archetype Created Web Application</display-name>
+
+	<servlet>
+		<servlet-name>JavaWebPageServlet</servlet-name>
+		<servlet-class>servlet.JavaWebPageServlet</servlet-class>
+	</servlet>
+	   <servlet-mapping>
+        <servlet-name>JavaWebPageServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    
+	<servlet>
+		<servlet-name>AddCommodityServlet</servlet-name>
+		<servlet-class>servlet.AddCommodityServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+        <servlet-name>AddCommodityServlet</servlet-name>
+        <url-pattern>/hello/add</url-pattern>
+    </servlet-mapping>
+    
+	<servlet>
+		<servlet-name>UpdateCommodityServlet</servlet-name>
+		<servlet-class>servlet.UpdateCommodityServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+        <servlet-name>UpdateCommodityServlet</servlet-name>
+        <url-pattern>/hello/update</url-pattern>
+    </servlet-mapping>
+    
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>servlet.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
 </web-app>

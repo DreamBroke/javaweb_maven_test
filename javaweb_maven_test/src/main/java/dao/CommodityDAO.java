@@ -1,14 +1,10 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import jdbc.ControlDB;
-import jdbc.DBClose;
-import jdbc.DBCon;
 import model.Commodity;
 
 public class CommodityDAO {
@@ -74,49 +70,24 @@ public class CommodityDAO {
         return com;
     }
 
-    public void insertToCommodity(String id, String name, String price, String quantity) {
+    public int insertToCommodity(String id, String name, String price, String quantity) {
         String sql = "insert into commodity values(?,?,?,?)";
-        Connection conn = DBCon.GetConnection();
-        PreparedStatement ps = null;
-        try {
-            ps = conn.prepareStatement(sql);
-            if (id != null && !id.equals("")) {
-                ps.setString(1, id);
-            } else {
-                ps.setString(1, null);
-            }
-            ps.setString(2, name);
-            ps.setString(3, price);
-            ps.setString(4, quantity);
-            ps.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DBClose.close(ps, conn);
-        }
+        String args[] = {id, name, price, quantity};
+        int affectedRow = ControlDB.executeUpdate(sql, args);
+        return affectedRow;
     }
     
-    public void updateCommodityById(String id, String name, String price, String quantity) {
+    public int updateCommodityById(String id, String name, String price, String quantity) {
         String sql = "update commodity set name=?,price=?,quantity=? where id=?";
-        Connection conn = DBCon.GetConnection();
-        PreparedStatement ps = null;
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, name);
-            ps.setString(2, price);
-            ps.setString(3, quantity);
-            ps.setString(4, id);
-            ps.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DBClose.close(ps, conn);
-        }
+        String args[] = {id, name, price, quantity};
+        int affectedRow = ControlDB.executeUpdate(sql, args);
+        return affectedRow;
     }
 
-    public void deleteConmmodityById(String id) {
+    public int deleteConmmodityById(String id) {
         String sql = "delete from commodity where id = " + id;
-        ControlDB.executeUpdate(sql);
+        int affectedRow = ControlDB.executeUpdate(sql);
+        return affectedRow;
     }
 
 }

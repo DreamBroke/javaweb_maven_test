@@ -51,8 +51,8 @@ public class ControlDB {
 		try {
 			conn = DBCon.GetConnection();
 			stmt = conn.createStatement();
-			int i = stmt.executeUpdate(sql);
-			return i;
+			int affectedRow = stmt.executeUpdate(sql);
+			return affectedRow;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,5 +62,27 @@ public class ControlDB {
 			DBClose.close(stmt, conn);
 		}
 	}
+	
+	//用PreparedStatement执行insert、update、delete语句
+    public static int executeUpdate(String sql, String args[]){
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = DBCon.GetConnection();
+            ps = conn.prepareStatement(sql);
+            for (int i = 1; i <= args.length; i++) {
+                ps.setString(i, args[i-1]);
+            }
+            int affectedRow = ps.executeUpdate();
+            return affectedRow;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            System.out.println("执行SQL语句出错：" + e.getMessage());
+            return 0;
+        } finally {
+            DBClose.close(ps, conn);
+        }
+    }
 	
 }
