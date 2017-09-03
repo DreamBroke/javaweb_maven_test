@@ -17,6 +17,8 @@ public class DBCon {
 	
 	private static String DB_PASSWORD;
 	
+	private static Connection connection;
+	
 	static{
 		Properties p = new Properties();
 		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("dbconfig.properties");
@@ -31,29 +33,20 @@ public class DBCon {
 		}
 	}
 	
-	private DBCon(){}
 	public static Connection GetConnection(){
-		Connection conn = null;
-		try {
-			Class.forName(DB_DRIVER);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+		if (connection == null) {
+		    try {
+	            Class.forName(DB_DRIVER);
+	        } catch (ClassNotFoundException e) {
+	            e.printStackTrace();
+	        }
+	        try {
+	            connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
 		}
-		try {
-			conn = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return conn;
-	}
-	
-	public static void main(String[] args) {
-		Connection conn = GetConnection();
-		if(conn == null){
-			System.out.println("a");
-		}else{
-			System.out.println("b");
-		}
+		return connection;
 	}
 	
 }
