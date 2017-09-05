@@ -38,7 +38,6 @@ public class ControlDB {
 			}
 			rs = ps.executeQuery();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return rs;
@@ -54,7 +53,6 @@ public class ControlDB {
 			int affectedRow = stmt.executeUpdate(sql);
 			return affectedRow;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("执行SQL语句出错：" + e.getMessage());
 			return 0;
@@ -76,7 +74,6 @@ public class ControlDB {
             int affectedRow = ps.executeUpdate();
             return affectedRow;
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             System.out.println("执行SQL语句出错：" + e.getMessage());
             return 0;
