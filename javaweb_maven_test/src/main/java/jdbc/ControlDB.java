@@ -57,7 +57,7 @@ public class ControlDB {
 			System.out.println("执行SQL语句出错：" + e.getMessage());
 			return 0;
 		}finally{
-			DBClose.close(stmt, conn);
+			DBClose.close(stmt);
 		}
 	}
 	
@@ -78,7 +78,7 @@ public class ControlDB {
             System.out.println("执行SQL语句出错：" + e.getMessage());
             return 0;
         } finally {
-            DBClose.close(ps, conn);
+            DBClose.close(ps);
         }
     }
 	

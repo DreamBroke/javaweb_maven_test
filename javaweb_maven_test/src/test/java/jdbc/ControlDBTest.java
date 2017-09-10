@@ -24,7 +24,7 @@ public class ControlDBTest extends TestCase {
     
     @Test
     public void testExecuteUpdateArgs() {
-        String[] commodity = {"admin", "1234567"};
-        assertNotNull(ControlDB.executeUpdate("update commodity SET username = ?,password = ? where id = 1", commodity));
+        String[] account = {"admin", "123456"};
+        assertEquals(1, ControlDB.executeUpdate("update account SET username = ?,password = ? where id = 1", account));
     }
 } 
