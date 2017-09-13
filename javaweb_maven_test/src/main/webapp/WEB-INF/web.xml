@@ -7,7 +7,7 @@
 		<servlet-name>JavaWebPageServlet</servlet-name>
 		<servlet-class>servlet.JavaWebPageServlet</servlet-class>
 	</servlet>
-	   <servlet-mapping>
+	<servlet-mapping>
         <servlet-name>JavaWebPageServlet</servlet-name>
         <url-pattern>/hello</url-pattern>
         <url-pattern>/</url-pattern>
@@ -23,17 +23,13 @@
     </servlet-mapping>
     
 	<servlet>
-		<servlet-name>UpdateCommodityServlet</servlet-name>
-		<servlet-class>servlet.UpdateCommodityServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-        <servlet-name>UpdateCommodityServlet</servlet-name>
-        <url-pattern>/hello/update</url-pattern>
-    </servlet-mapping>
-    
-	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>servlet.LoginServlet</servlet-class>
+		<init-param>
+		      <param-name>test</param-name>
+		      <param-value>hello world</param-value>
+		</init-param>
+		<load-on-startup>10</load-on-startup>
 	</servlet>
 	<servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>

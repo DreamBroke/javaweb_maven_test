@@ -79,7 +79,7 @@ public class CommodityDAO {
     
     public int updateCommodityById(String id, String name, String price, String quantity) {
         String sql = "update commodity set name=?,price=?,quantity=? where id=?";
-        String args[] = {id, name, price, quantity};
+        String args[] = {name, price, quantity, id};
         int affectedRow = ControlDB.executeUpdate(sql, args);
         return affectedRow;
     }
